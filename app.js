@@ -5,7 +5,7 @@ http.createServer(function(request,response) {
 	response.writeHead(200, {
 	'Content-type' : 'text/plain'
 	});
-	response.end('Hello world ssiballlllllll jotgata!!!! mother! save me please!');
+	response.end('Hello world ssiballlllllll jotgata!!!! ssiballlllllll mother! save me please!');
 }).listen(3000);
 
 //몽고디비 DB 연결(온라인 리포지토리)
