@@ -1,12 +1,35 @@
 var mongoose = require('mongoose');
 var http = require('http');
+var express = require('express');
+var fs = require('fs');
+var app = express();
+/*
 //기본 셋업
-http.createServer(function(request,response) {
-	response.writeHead(200, {
-	'Content-type' : 'text/plain'
-	});
-	response.end('Hello world ssiballlllllll jotgata!!!! ssiballlllllll mother! save me please!');
+//http.createServer(function(request,response) {
+	//response.writeHead(200, {
+	//'Content-type' : 'text/plain'
+	//});
+	//response.end('Hello world ssiballlllllll jotgata!!!! ssiballlllllll mother! save me please!');
 }).listen(3000);
+*/
+
+app.listen(3000, function(){
+	console.log('server start');
+});
+
+//메인페이지에서 접속할 때 페이지
+app.get('/', function(require, response){
+	fs.readFile('./html/index.html', function(err, data){
+		response.writeHead(200, {'Content-type': 'text/html'});
+		response.end(data);
+	})
+} )
+app.get('/main', function(require, response) {
+	fs.readFile('./html/main.html', function(err, data){
+		response.writeHead(200, { 'Content-type': 'text/html'});
+		response.end(data);
+	});
+});
 
 //몽고디비 DB 연결(온라인 리포지토리)
 mongoose.connect("mongodb://test:testtest@ds011715.mlab.com:11715/kyseshim");
