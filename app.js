@@ -3,6 +3,7 @@ var http = require('http');
 var express = require('express');
 var fs = require('fs');
 var app = express();
+
 /*
 //기본 셋업
 //http.createServer(function(request,response) {
@@ -32,7 +33,7 @@ app.get('/main', function(require, response) {
 });
 
 //몽고디비 DB 연결(온라인 리포지토리)
-mongoose.connect("mongodb://test:testtest@ds011715.mlab.com:11715/kyseshim");
+mongoose.connect('mongodb://localhost:27017/test');
 var db = mongoose.connection;
 db.once("open",function(){
 	console.log("mongoDB connected!");
