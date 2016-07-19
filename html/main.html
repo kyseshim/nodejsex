@@ -1,13 +1,78 @@
 <!DOCTYPE html>
 <html>
 	<head>
+	<meta charset="utf-8">
+	<title>회원가입 페이지에 오신 것을 환영합니다</title>
 	</head>
+	<!--
 	<body>
 		<div>
-		main page!
+			회원가입이다 예이!
+			<br>
+			<input type = "button", value="뒤로가기", onclick="movepage2()";/>
+			<br>
+
 		</div>
-		
+		<script type="text/javascript">
+		function movepage2(){
+			location.href="./";
+		}
+		</script>
 
 		
-	</body>
+	</body>-->
+	<body bgcolor="#d7bff5">
+<center><br>
+<font size="4" color="#ffffff"><b>회원관리 예제</b></font>
+<br>
+<form action="Form_Praxis1.html" method="post">
+      <table width="95%" border="1" cellspacing="0" cellpadding="0">
+            <tr>
+                  <td width="20%">이름</td>
+                  <td width="80%"><input type="text" name="user" size="16" maxlength="8"></td>
+            </tr>
+            <tr>
+                  <td>아이디</td>
+                  <td><input type="text" name="id" size="16" maxlength="8"></td>
+            </tr>
+            <tr>
+                  <td>비밀번호</td>
+                  <td><input type="password" name="pass" size="16" maxlength="8"></td>
+            </tr>
+            <tr>
+                  <td>성별</td>
+                  <td >
+                  남자:<input type="radio" name="sex" value="남자">&nbsp;&nbsp;
+                  여자:<input type="radio" name="sex" value="여자">
+                  </td>
+            </tr>
+            <tr>
+                  <td>주민등록번호</td>
+                  <td>
+                  <input type="text" name="jomin1" size="12" maxlength="6">∼ 
+                  <input type="text" name="jomin2" size="14" maxlength="7">
+                  </td>
+            </tr>
+            <tr>
+                  <td>주소</td>
+                  <td><input type="text" name="address" size="30" maxlength="60"></td>
+            </tr>
+            <tr>
+                  <td>전화번호</td>
+                  <td><input type="text" name="phone" size="16" maxlength="15"></td>
+            </tr>
+            <tr>
+                  <td>자기소개</td>
+                  <td><textarea name="content" cols="32" rows="5"></textarea></td>
+            </tr>
+            <tr>
+                  <td colspan="2" align="center">
+                  <input type="submit" value="입력">
+                  <input type="reset" value="다시쓰기">
+                  </td>
+            </tr>
+      </table>
+</form>
+</center>
+</body> 
 </html>
