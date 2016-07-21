@@ -49,6 +49,7 @@ var dataSchema = mongoose.Schema({
 });
 
 var Data = mongoose.model('data', dataSchema);
+
 Data.findOne({name:"myData", count:0}, function(err, data){
 	if(err) return console.log("Data Error", err);
 	if(!data)
