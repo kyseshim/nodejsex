@@ -4,8 +4,29 @@ var mongoose = require('mongoose');
 var http = require('http');
 var express = require('express');
 var fs = require('fs');
-var app = express();
+//var app = express();
+var ejs = require('ejs');
+//var mongojs = require('mongojs');
+//var db = mongojs('localhost:27017/memo');
+var connect = require('connect');
+var db = require('mongojs')('memo', ['TB_DATA']);
 
+function get(path, cd) {
+    return function (require, response, next) {
+        if (require.method != 'GET' || require.url != path)
+            return next();
+        cd(require, response, next);
+    }
+}
+
+var app = connect().use(get('/', function (require, response, next) {
+        fs.readFile('public/main.html', 'utf8', function (error, data) {
+            db.TB_DATA.find({}, { name: 1 }, function (error, cursor) {
+                response.writeHead(200, { 'Content-Type': 'text/html' });
+                response.end(ejs.render(data, { data: cursor }));
+            });
+        });
+    })).listen(3000, function () { console.log("서버 연결 : 3000") });
 
 //기본 셋업
 //http.createServer(function(request,response) {
@@ -16,10 +37,12 @@ var app = express();
 //}).listen(3000);
 
 
-app.listen(3000, function(){
-	console.log('server start');
-});
+//app.listen(3000, function(){
+//	console.log('server start');
+//});
 
+
+/*
 //메인페이지에서 접속할 때 페이지
 app.get('/', function(require, response){
 	fs.readFile('./public/index.html', function(err, data){
@@ -33,6 +56,8 @@ app.get('/main', function(require, response) {
 		response.end(data);
 	});
 });
+*//*
+
 
 //몽고디비 DB 연결(온라인 리포지토리)
 mongoose.connect('mongodb://localhost:27017/test');
@@ -42,8 +67,10 @@ db.once("open",function(){
 });
 db.on("error", function (err) {
 	console.log("DB Error : ", err);
-});
+});*/
 
+
+/*
 // 몽고디비에 데이터 때려박기
 var dataSchema = mongoose.Schema({
 	name:String,
@@ -61,7 +88,7 @@ Data.findOne({name:"myData", count:0}, function(err, data){
 			console.log("Counter initialized : ", data);
 		})
 	}
-});
+});*/
 
 //console.log('Server is running at http://localhost:3000');
 
